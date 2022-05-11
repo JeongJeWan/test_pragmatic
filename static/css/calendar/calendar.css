@@ -219,8 +219,17 @@
     border: 2px solid var(--BG);
     font-size: 15px;
 }
-.resv_btn.purchase{width: 100%;}
-.resv_btn.cancel{width: 100%;}
+.resv_btn.purchase{
+    width:100px;
+    margin:auto;
+    display:block;
+}
+.resv_btn.cancel{
+    width:100px;
+    margin:auto;
+    margin-top: 10px;
+    display:block;
+}
 
 
 .resv_btn{

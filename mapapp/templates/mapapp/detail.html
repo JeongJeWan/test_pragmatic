@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+        <div class="pragmatic_500px_div">
+            <h1>
+                {{ target_map.title }}
+            </h1>
+            <h5>
+                {{ target_map.writer.profile.nickname }}
+            </h5>
+            <hr>
+            <img style="width: 100%; border-radius: 1rem; margin: 2rem 0"
+                    src="{{ target_map.image.url }}" alt="">
+            <div style="text-align: left">
+                {{ target_map.content | safe }}
+            </div>
+
+            {% if target_map.writer == user %}
+            <a href="{% url 'mapapp:update' pk=target_map.pk %}"
+            class="btn btn-primary rounded-pill col-4">
+                Update
+            </a>
+            <a href="{% url 'mapapp:delete' pk=target_map.pk %}"
+            class="btn btn-danger rounded-pill col-4">
+                Delete
+            </a>
+            {% endif %}
+            <hr>
+
+            {% for comment in  target_map.comment.all %}
+                {% include 'commentapp/detail.html' with comment=comment %}
+            {% endfor %}
+
+            {% include 'commentapp/create.html' with map=target_map %}
+
+        </div>
+    </div>
+
+{% endblock %}

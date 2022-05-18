@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'projectapp',
     'subscribeapp',
     'likeapp',
+    'mapapp',
     'calendarapp',
 ]
 

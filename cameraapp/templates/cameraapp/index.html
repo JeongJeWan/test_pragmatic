@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div>
+    <div class="container">
+    <div class="mt-5">
+      <form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-success btn-lg">Upload</button>
+      </form>
+    </div>
+
+      {% for x in all %}
+      <h3 class="text-center mt-2 mb-2">{{ x.caption }}</h3>
+      <video class="embed-responsive embed-responsive-16by9" controls="controls">
+        <source src="{{x.camera.url}}" type="video/mp4">
+      </video>
+      {% endfor %}
+    </div>
+  </div>
+
+
+{% endblock %}

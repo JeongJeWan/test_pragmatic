@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'likeapp',
     'mapapp',
     'calendarapp',
+    'cameraapp',
 ]
 
 MIDDLEWARE = [

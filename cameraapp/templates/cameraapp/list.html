@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+      {% if not all %}
+      <div class="text-center">
+        <h1>No Video YET!</h1>
+      </div>
+      {% endif %}
+
+      {% if request.user.is_authenticated %}
+      <div style="text-align: center">
+        <a href="{% url 'cameraapp:camera_main' %}" class="btn btn-dark rounded-pill mt-3 mb-3 px-3">
+          Create Video
+        </a>
+      </div>
+      {% endif %}
+
+      <div style="text-align: center; max-width: 700px; margin: 2rem auto">
+        {% for x in all %}
+        <h3 class="mt-4 mb-4">{{ x.caption }}</h3>
+        <video class="embed-responsive embed-responsive-16by9" controls="controls">
+            <source src="{{x.camera.url}}" type="video/mp4">
+        </video>
+        {% endfor %}
+      </div>
+    <div/>
+
+{% endblock %}

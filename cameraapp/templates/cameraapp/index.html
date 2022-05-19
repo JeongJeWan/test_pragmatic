@@ -1,25 +1,22 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
+<script src="//cdn.jsdelivr.net/npm/medium-editor@5.23.2/dist/js/medium-editor.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@5.23.2/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 
-  <div>
+  <div style="text-align: center; max-width: 500px; margin: 4rem auto">
     <div class="container">
-    <div class="mt-5">
-      <form action="." method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button class="btn btn-success btn-lg">Upload</button>
-      </form>
-    </div>
-
-      {% for x in all %}
-      <h3 class="text-center mt-2 mb-2">{{ x.caption }}</h3>
-      <video class="embed-responsive embed-responsive-16by9" controls="controls">
-        <source src="{{x.camera.url}}" type="video/mp4">
-      </video>
-      {% endfor %}
+      {% if request.user.is_authenticated %}
+        <form action="{% url 'cameraapp:list' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <button class="btn btn-primary rounded-pill col-3 mt-2">Upload</button>
+        </form>
+      {% endif %}
     </div>
   </div>
 
+<script>var editor = new MediumEditor('.editable');</script>
 
 {% endblock %}

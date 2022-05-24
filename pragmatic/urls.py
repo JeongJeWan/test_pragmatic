@@ -34,5 +34,6 @@ urlpatterns = [
     path('maps/', include('mapapp.urls')),
     path('calendars/', include('calendarapp.urls')),
     path('cameras/', include('cameraapp.urls')),
+    path('cals/', include('cal.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

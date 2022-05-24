@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'mapapp',
     'calendarapp',
     'cameraapp',
+    'cal',
 ]
 
 MIDDLEWARE = [

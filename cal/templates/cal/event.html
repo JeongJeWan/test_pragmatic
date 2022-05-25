@@ -1,9 +1,7 @@
 {% extends 'base_cal.html' %}
 
 {% block content %}
-<div class="clearfix">
-  <a class="btn btn-info" href="{% url 'cal:calendar' %}"> Calendar </a>
-</div>
+
 
 {% if form.errors %}
     {% for field in form %}
@@ -24,7 +22,12 @@
   {% csrf_token %}
   <table class="form form-table">
     {{ form }}
-    <tr><td colspan="2"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>
+    <tr>
+        <td colspan="2">
+            <a class="btn btn-primary" href="{% url 'cal:calendar' %}"> Calendar </a>
+            <button type="submit" class="btn btn-info right"> Submit </button>
+        </td>
+    </tr>
   </table>
 </form>
 {% endblock %}
